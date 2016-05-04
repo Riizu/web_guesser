@@ -10,7 +10,9 @@ get '/' do
 end
 
 def check_guess(guess)
-  if guess.to_i > settings.number && guess.to_i - settings.number > 5
+  if guess.nil?
+    message = "Please enter a guess."
+  elsif guess.to_i > settings.number && guess.to_i - settings.number > 5
     message = "Way too high!"
   elsif guess.to_i < settings.number && settings.number - guess.to_i > 5
     message = "Way too low!"
@@ -18,7 +20,7 @@ def check_guess(guess)
     message = "Too high!"
   elsif guess.to_i < settings.number
     message = "Too low!"
-  else
+  elsif guess.to_i == settings.number
     message = "You got it right!"
   end
   message

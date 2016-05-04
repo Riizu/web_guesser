@@ -1,9 +1,25 @@
 <html>
-  <head></head>
+  <head>
+    <style>
+      body {
+        background: <%=
+                      if message.include?("Please")
+                        "#FFFFFF;"
+                      elsif message.include?("Way too")
+                        "#FF0000;"
+                      elsif message.include?("right!")
+                        "#00FF26;"
+                      else
+                        "#FF9C9C;"
+                      end
+                    %>
+      }
+    </style>
+  </head>
   <body>
     <p>
       <%=
-        if message == "You got it right!"
+        if message.include?("right!")
           "#{message} The secret number is #{number}"
         else
           "#{message}"
